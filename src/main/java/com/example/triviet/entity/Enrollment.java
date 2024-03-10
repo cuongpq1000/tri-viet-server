@@ -11,22 +11,22 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "Enrollment")
+@Table(name = "enrollment")
 public class Enrollment {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "EnrollmentID")
+  @Column(name = "enrollmentid")
   private Long enrollmentID;
 
   @ManyToOne
-  @JoinColumn(name = "StudentID")
+  @JoinColumn(name = "studentid")
   private Student student;
 
   @ManyToOne
-  @JoinColumn(name = "ClassID")
+  @JoinColumn(name = "classid")
   private Classes classes;
 
-  @Column(name = "EnrollmentDate")
+  @Column(name = "enrollmentdate")
   private Date enrollmentDate;
 }

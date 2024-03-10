@@ -11,29 +11,54 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "Students")
+@Table(name = "students")
 public class Student {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "StudentID")
+  @Column(name = "studentid")
   private Long studentID;
 
-  @Column(name = "FirstName")
+  @Column(name = "firstname")
   private String firstName;
 
-  @Column(name = "LastName")
+  @Column(name = "lastname")
   private String lastName;
 
-  @Column(name = "DateOfBirth")
+  @Column(name = "dateofbirth")
   private Date dateOfBirth;
 
-  @Column(name = "EmailAddress")
+  @Column(name = "emailaddress")
   private String emailAddress;
 
-  @Column(name = "PhoneNumber")
+  @Column(name = "phonenumber")
   private String phoneNumber;
 
-  @Column(name = "Address")
+  @Column(name = "address")
   private String address;
+
+  @Override
+  public String toString() {
+    return "Student{"
+        + "studentID="
+        + studentID
+        + ", firstName='"
+        + firstName
+        + '\''
+        + ", lastName='"
+        + lastName
+        + '\''
+        + ", dateOfBirth="
+        + dateOfBirth
+        + ", emailAddress='"
+        + emailAddress
+        + '\''
+        + ", phoneNumber='"
+        + phoneNumber
+        + '\''
+        + ", address='"
+        + address
+        + '\''
+        + '}';
+  }
 }

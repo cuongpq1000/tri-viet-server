@@ -9,26 +9,26 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "Teachers")
+@Table(name = "teachers")
 public class Teacher {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "TeacherID")
+  @Column(name = "teacherid")
   private Long teacherID;
 
-  @Column(name = "FirstName")
+  @Column(name = "firstname")
   private String firstName;
 
-  @Column(name = "LastName")
+  @Column(name = "lastname")
   private String lastName;
 
-  @Column(name = "EmailAddress")
+  @Column(name = "emailaddress")
   private String emailAddress;
 
-  @Column(name = "PhoneNumber")
+  @Column(name = "phonenumber")
   private String phoneNumber;
 
-  @Column(name = "Specialization")
+  @Column(name = "specialization")
   private String specialization;
 }
