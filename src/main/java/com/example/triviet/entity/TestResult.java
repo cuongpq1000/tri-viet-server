@@ -12,31 +12,31 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "TestResults")
+@Table(name = "testresults")
 public class TestResult {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "TestResultID")
+  @Column(name = "testresultid")
   private Long testResultID;
 
   @ManyToOne
-  @JoinColumn(name = "StudentID")
+  @JoinColumn(name = "studentid")
   private Student student;
 
   @ManyToOne
-  @JoinColumn(name = "CourseID")
+  @JoinColumn(name = "courseid")
   private Course course;
 
-  @Column(name = "TestName")
+  @Column(name = "testname")
   private String testName;
 
-  @Column(name = "Score")
+  @Column(name = "score")
   private BigDecimal score;
 
-  @Column(name = "Feedback", columnDefinition = "TEXT")
+  @Column(name = "feedback", columnDefinition = "TEXT")
   private String feedback;
 
-  @Column(name = "TestDate")
+  @Column(name = "testdate")
   private Date testDate;
 }

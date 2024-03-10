@@ -9,20 +9,20 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "Courses")
+@Table(name = "courses")
 public class Course {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "CourseID")
+  @Column(name = "courseid")
   private Long courseID;
 
-  @Column(name = "CourseName")
+  @Column(name = "coursename")
   private String courseName;
 
-  @Column(name = "Description", columnDefinition = "TEXT")
+  @Column(name = "description", columnDefinition = "TEXT")
   private String description;
 
-  @Column(name = "Level")
+  @Column(name = "level")
   private String level;
 }

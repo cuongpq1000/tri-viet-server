@@ -12,25 +12,24 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "Payments")
+@Table(name = "payments")
 public class Payment {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "PaymentID")
+  @Column(name = "paymentid")
   private Long paymentID;
 
   @ManyToOne
-  @JoinColumn(name = "StudentID")
+  @JoinColumn(name = "studentid")
   private Student student;
 
-  @Column(name = "Amount")
+  @Column(name = "amount")
   private BigDecimal amount;
 
-  @Column(name = "PaymentDate")
+  @Column(name = "paymentdate")
   private Date paymentDate;
 
-  @Column(name = "PaymentMethod")
+  @Column(name = "paymentmethod")
   private String paymentMethod;
-
 }

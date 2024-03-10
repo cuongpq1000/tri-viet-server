@@ -11,40 +11,40 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Classes")
+@Table(name = "classes")
 public class Classes {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "ClassID")
+  @Column(name = "classid")
   private Long classID;
 
   @ManyToOne
-  @JoinColumn(name = "CourseID")
+  @JoinColumn(name = "courseid")
   private Course course;
 
   @ManyToOne
-  @JoinColumn(name = "TeacherID")
+  @JoinColumn(name = "teacherid")
   private Teacher teacher;
 
-  @Column(name = "StartTime")
+  @Column(name = "starttime")
   private Date startTime;
 
-  @Column(name = "EndTime")
+  @Column(name = "endtime")
   private Date endTime;
 
-  @Column(name = "Days")
+  @Column(name = "days")
   private String days;
 
-  @Column(name = "ClassFinalDate")
+  @Column(name = "classfinaldate")
   private Date classFinalDate;
 
-  @Column(name = "ClassMidtermDate")
+  @Column(name = "classmidtermdate")
   private Date classMidtermDate;
 
-  @Column(name = "ClassRoom")
+  @Column(name = "classroom")
   private String classRoom;
 
-  @Column(name = "ClassBranch")
+  @Column(name = "classbranch")
   private String classBranch;
 }
