@@ -6,6 +6,9 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
+  liquibase:
+    change-log: db/changelog-master.xml
+    enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
