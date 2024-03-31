@@ -9,9 +9,11 @@ import com.example.triviet.repository.RoleRepository;
 import com.example.triviet.repository.UserRepository;
 import com.example.triviet.service.AuthenticationService;
 import com.example.triviet.service.JwtService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -35,7 +37,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @Override
+  @Transactional
   public AuthenticationResponse register(RegisterRequest request) {
+    if(!ObjectUtils.isEmpty(userRepository.findByEmail(request.getEmail())) ){
+      return null;
+    }
     User user =
         User.builder()
             .firstName(request.getFirstName())
@@ -44,7 +50,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             .password(passwordEncoder.encode(request.getPassword()))
             .build();
     Role userRole = roleRepository.getReferenceById(1);
-    user.addRole(userRole);
+    user.setRole(userRole);
     userRepository.save(user);
     return AuthenticationResponse.builder().token(jwtService.generateToken(user)).build();
   }

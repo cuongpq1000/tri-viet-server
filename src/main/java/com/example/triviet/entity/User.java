@@ -18,7 +18,7 @@ import java.util.*;
 public class User implements UserDetails {
   @Id
   @Column(name = "user_id")
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @Column(name = "email", nullable = false)
@@ -33,25 +33,13 @@ public class User implements UserDetails {
   @Column(name = "lastname", nullable = false)
   private String lastName;
 
-  @ManyToMany
-  @JoinTable(
-          name = "users_roles",
-          joinColumns = @JoinColumn(name = "user_id"),
-          inverseJoinColumns = @JoinColumn(name = "role_id")
-  )
-  private Set<Role> roles = new HashSet<>();
+  @ManyToOne
+  @JoinColumn(name = "role_id")
+  private Role role;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-    for (Role role : roles) {
-      authorities.add(new SimpleGrantedAuthority(role.getName()));
-    }
-    return authorities;
-  }
-
-  public void addRole(Role role) {
-    this.roles.add(role);
+    return List.of(new SimpleGrantedAuthority(role.getName()));
   }
 
   @Override

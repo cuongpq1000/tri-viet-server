@@ -16,7 +16,7 @@ import java.util.Date;
 public class TestResult {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "testresultid")
   private Long testResultID;
 

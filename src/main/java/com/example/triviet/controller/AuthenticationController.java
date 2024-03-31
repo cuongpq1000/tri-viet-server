@@ -24,8 +24,12 @@ public class AuthenticationController {
   }
 
   @PostMapping("/register")
-  public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
-    return new ResponseEntity<>(authenticationService.register(request), HttpStatus.OK);
+  public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
+    AuthenticationResponse authenticationResponse = authenticationService.register(request);
+    if (authenticationResponse == null) {
+      return new ResponseEntity<>("This email has been registered", HttpStatus.CONFLICT);
+    }
+    return new ResponseEntity<>(authenticationResponse.getToken(), HttpStatus.OK);
   }
 
   @PostMapping("/authenticate")

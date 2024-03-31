@@ -15,6 +15,6 @@ spring:
     password: 0913825888
     driverClassName: org.postgresql.Driver
 jwt:
-  secret_key: Ly|E}#R),K`B$Br
+  secret_key: 9a07935af7db592e7ae25fab403734bd3c05220b407adaf883a2b3eeffd6eec3
   expiration: 1440000
 
