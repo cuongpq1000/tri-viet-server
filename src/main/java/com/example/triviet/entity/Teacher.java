@@ -26,6 +26,9 @@ public class Teacher {
   @Column(name = "emailaddress")
   private String emailAddress;
 
+  @Column(name = "password")
+  private String password;
+
   @Column(name = "phonenumber")
   private String phoneNumber;
 

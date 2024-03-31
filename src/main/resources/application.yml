@@ -10,8 +10,11 @@ spring:
     change-log: db/changelog-master.xml
     enabled: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
+    url: jdbc:postgresql://localhost:15432/triviet
+    username: triviet
     password: 0913825888
     driverClassName: org.postgresql.Driver
+jwt:
+  secret_key: 9a07935af7db592e7ae25fab403734bd3c05220b407adaf883a2b3eeffd6eec3
+  expiration: 1440000
 
