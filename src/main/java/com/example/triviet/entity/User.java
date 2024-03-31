@@ -6,8 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Builder
@@ -34,12 +33,25 @@ public class User implements UserDetails {
   @Column(name = "lastname", nullable = false)
   private String lastName;
 
-  @Enumerated(EnumType.STRING)
-  private Role userRole;
+  @ManyToMany
+  @JoinTable(
+          name = "users_roles",
+          joinColumns = @JoinColumn(name = "user_id"),
+          inverseJoinColumns = @JoinColumn(name = "role_id")
+  )
+  private Set<Role> roles = new HashSet<>();
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(userRole.getName()));
+    List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+    for (Role role : roles) {
+      authorities.add(new SimpleGrantedAuthority(role.getName()));
+    }
+    return authorities;
+  }
+
+  public void addRole(Role role) {
+    this.roles.add(role);
   }
 
   @Override

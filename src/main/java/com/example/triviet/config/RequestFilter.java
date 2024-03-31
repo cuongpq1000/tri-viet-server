@@ -38,8 +38,9 @@ public class RequestFilter extends OncePerRequestFilter {
       FilterChain filterChain)
       throws ServletException, IOException {
     String authHeader = request.getHeader("Authorization");
-    if (StringUtils.hasText(authHeader) || !authHeader.startsWith("Bearer ")) {
+    if (authHeader == null || !authHeader.startsWith("Bearer ")) {
       filterChain.doFilter(request, response);
+      return;
     }
     String jwtToken = authHeader.substring(7);
     String userEmail = jwtService.getUserEmail(jwtToken);

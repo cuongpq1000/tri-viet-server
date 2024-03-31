@@ -19,4 +19,12 @@ public class Role {
     @Column(name="name")
     private String name;
 
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public Role(Integer id) {
+        this.id = id;
+    }
+
 }

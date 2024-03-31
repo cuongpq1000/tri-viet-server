@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -19,7 +20,11 @@ public class SecurityConfig {
   public SecurityConfig(RequestFilter requestFilter) {
     this.requestFilter = requestFilter;
   }
-
+  private static final String[] WHITE_LIST_URL = {
+          "/api/v1/auth/**",
+          "/swagger-ui/**",
+          "/swagger-resources/**"
+  };
   /**
    * configures Spring Security to disable CSRF and CORS protection defines authorization rules for
    * different URL patterns sets session management to be stateless, adds a custom filter to the
@@ -37,7 +42,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(
             request ->
                 request
-                    .requestMatchers("/swagger-ui/**")
+                    .requestMatchers(WHITE_LIST_URL)
                     .permitAll()
                     .requestMatchers("/api/admin/**")
                     .hasRole("ADMIN")
@@ -53,5 +58,10 @@ public class SecurityConfig {
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
     return http.build();
+  }
+
+  @Bean
+  public BCryptPasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
   }
 }
