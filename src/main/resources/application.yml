@@ -14,4 +14,7 @@ spring:
     username: triviet
     password: 0913825888
     driverClassName: org.postgresql.Driver
+jwt:
+  secret_key: Ly|E}#R),K`B$Br
+  expiration: 1440000
 

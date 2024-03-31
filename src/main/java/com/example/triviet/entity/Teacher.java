@@ -13,7 +13,7 @@ import lombok.*;
 public class Teacher {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "teacherid")
   private Long teacherID;
 
@@ -25,6 +25,9 @@ public class Teacher {
 
   @Column(name = "emailaddress")
   private String emailAddress;
+
+  @Column(name = "password")
+  private String password;
 
   @Column(name = "phonenumber")
   private String phoneNumber;

@@ -16,7 +16,7 @@ import java.util.Date;
 public class Payment {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "paymentid")
   private Long paymentID;
 

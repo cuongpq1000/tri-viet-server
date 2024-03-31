@@ -5,5 +5,7 @@
 <changeSet id="001" author="JohnPham" runOnChange="true" runInTransaction="true" labels="DDL">
     <sqlFile path="../script/ddl/001-create-tables.sql" relativeToChangelogFile="true"/>
 </changeSet>
-
+    <changeSet id="002" author="JohnPham" runOnChange="true" runInTransaction="true" labels="DDL">
+        <sqlFile path="../script/ddl/002-create-user-with-roles.sql" relativeToChangelogFile="true"/>
+    </changeSet>
 </databaseChangeLog>
