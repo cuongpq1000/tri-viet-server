@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /usr/src/app
 
 # Sao chép các file jar da build vao image nay
-COPY /target/triviet-0.0.1-SNAPSHOT.jar ./triviet.jar
+COPY ./target/triviet-0.0.1-SNAPSHOT.jar ./triviet.jar
 
 # Định nghĩa lệnh để chạy ứng dụng
 ENTRYPOINT ["java", "-jar", "./triviet.jar"]
